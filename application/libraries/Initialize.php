@@ -18,7 +18,14 @@ class Initialize
     {
         $this->ci->load->config('smarty');
         $config = $this->ci->config->config['smarty'];
-        
+        if(ROUTE_MODE == 'EXTEND')
+        {
+            $config['template_dir'] = 
+                is_dir(APPPATH.'modules/'.$this->ci->router->module.'/views/')? 
+                APPPATH.'modules/'.$this->ci->router->module.'/views/' :$config['template_dir'];
+        }
+
+
         $this->ci->smarty = new Smarty();
         $this->ci->smarty->setTemplateDir($config['template_dir']);
         $this->ci->smarty->setCacheDir($config['compile_dir']);
