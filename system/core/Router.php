@@ -401,7 +401,8 @@ class CI_Router {
 	    
 	    //if route_module equal 'EXTEND'
 	    if($this->route_mode == 'EXTEND')
-	    {
+	    {	
+	    	$this->set_module($segments[0]);
 	        $this->_set_module_path($segments[0]);
 	        unset($segments[0]);
 	    
